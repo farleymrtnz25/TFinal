@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const API_URL_TRABAJADORES = 'https://<TU-DOMINIO-NETLIFY>.netlify.app/.netlify/functions/api/trabajadores';
-    const API_URL_INVENTARIO = 'https://<TU-DOMINIO-NETLIFY>.netlify.app/.netlify/functions/api/inventario';
+    const API_URL_TRABAJADORES = 'https://licorera.netlify.app/.netlify/functions/api/trabajadores';
+    const API_URL_INVENTARIO = 'https://licorera.netlify.app/.netlify/functions/api/inventario';
 
     // Lógica para manejar formularios de trabajadores
     document.getElementById('crearTrabajadorForm').addEventListener('submit', async function(e) {

@@ -10,7 +10,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "firebase": "^11.8.1",
     "firebase-admin": "^11.0.0",
+    "react-transition-group": "^4.4.5",
     "serverless-http": "^3.0.0"
   }
 }
