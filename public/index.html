@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Trabajadores e Inventario - Mi Licorera</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        h2 { color: #333; }
+        input, button { padding: 8px; margin: 5px 0; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 15px; padding: 10px; border-radius: 3px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Trabajadores e Inventario - Mi Licorera</h1>
+
+    <!-- Formularios y tabla para Trabajadores -->
+    <div class="container">
+        <h2>Registrar Nuevo Trabajador</h2>
+        <form id="crearTrabajadorForm">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" required>
+            </div>
+            <div>
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" required>
+            </div>
+            <div>
+                <label for="salario">Salario:</label>
+                <input type="number" id="salario" required>
+            </div>
+            <div>
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" required>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+        <div id="crearTrabajadorResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Actualizar Trabajador</h2>
+        <form id="actualizarTrabajadorForm">
+            <div>
+                <label for="updateId">ID del Trabajador:</label>
+                <input type="text" id="updateId" required>
+            </div>
+            <div>
+                <label for="updateCampo">Campo a Actualizar:</label>
+                <select id="updateCampo" required>
+                    <option value="nombre">Nombre</option>
+                    <option value="apellido">Apellido</option>
+                    <option value="cargo">Cargo</option>
+                    <option value="salario">Salario</option>
+                    <option value="telefono">Teléfono</option>
+                </select>
+            </div>
+            <div>
+                <label for="updateValor">Nuevo Valor:</label>
+                <input type="text" id="updateValor" required>
+            </div>
+            <button type="submit">Actualizar</button>
+        </form>
+        <div id="actualizarTrabajadorResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Eliminar Trabajador</h2>
+        <form id="eliminarTrabajadorForm">
+            <div>
+                <label for="deleteId">ID del Trabajador:</label>
+                <input type="text" id="deleteId" required>
+            </div>
+            <button type="submit">Eliminar</button>
+        </form>
+        <div id="eliminarTrabajadorResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Trabajadores</h2>
+        <button id="listarTrabajadoresBtn">Actualizar Lista</button>
+        <div id="listarTrabajadoresResult" class="result"></div>
+        <table id="trabajadoresTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                    <th>Salario</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody id="trabajadoresBody">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formularios y tabla para Inventario -->
+    <div class="container">
+        <h2>Registrar Nuevo Producto</h2>
+        <form id="crearProductoForm">
+            <div>
+                <label for="productoNombre">Nombre del Producto:</label>
+                <input type="text" id="productoNombre" required>
+            </div>
+            <div>
+                <label for="productoCantidad">Cantidad:</label>
+                <input type="number" id="productoCantidad" required>
+            </div>
+            <div>
+                <label for="productoPrecio">Precio:</label>
+                <input type="number" id="productoPrecio" required>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+        <div id="crearProductoResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Actualizar Producto</h2>
+        <form id="actualizarProductoForm">
+            <div>
+                <label for="productoUpdateId">ID del Producto:</label>
+                <input type="text" id="productoUpdateId" required>
+            </div>
+            <div>
+                <label for="productoUpdateCampo">Campo a Actualizar:</label>
+                <select id="productoUpdateCampo" required>
+                    <option value="nombre">Nombre</option>
+                    <option value="cantidad">Cantidad</option>
+                    <option value="precio">Precio</option>
+                </select>
+            </div>
+            <div>
+                <label for="productoUpdateValor">Nuevo Valor:</label>
+                <input type="text" id="productoUpdateValor" required>
+            </div>
+            <button type="submit">Actualizar</button>
+        </form>
+        <div id="actualizarProductoResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Eliminar Producto</h2>
+        <form id="eliminarProductoForm">
+            <div>
+                <label for="productoDeleteId">ID del Producto:</label>
+                <input type="text" id="productoDeleteId" required>
+            </div>
+            <button type="submit">Eliminar</button>
+        </form>
+        <div id="eliminarProductoResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Productos</h2>
+        <button id="listarProductosBtn">Actualizar Lista</button>
+        <div id="listarProductosResult" class="result"></div>
+        <table id="productosTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody id="productosBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
