@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ nombre, apellido, cargo, salario, telefono })
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('crearTrabajadorResult').innerHTML = `
                 <div class="success">Trabajador creado con ID: ${result.id}</div>
             `;
@@ -45,7 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ [campo]: valor })
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('actualizarTrabajadorResult').innerHTML = `
                 <div class="success">${result.message}</div>
             `;
@@ -68,7 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'DELETE'
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('eliminarTrabajadorResult').innerHTML = `
                 <div class="success">${result.message}</div>
             `;
@@ -85,7 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('listarTrabajadoresBtn').addEventListener('click', async function() {
         try {
             const response = await fetch(`${API_URL_TRABAJADORES}/listar`);
-            const trabajadores = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const trabajadores = JSON.parse(text);
 
             const tableBody = document.getElementById('trabajadoresBody');
             tableBody.innerHTML = '';
@@ -129,7 +145,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ nombre: productoNombre, cantidad: productoCantidad, precio: productoPrecio })
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('crearProductoResult').innerHTML = `
                 <div class="success">Producto creado con ID: ${result.id}</div>
             `;
@@ -156,7 +176,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ [campo]: valor })
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('actualizarProductoResult').innerHTML = `
                 <div class="success">${result.message}</div>
             `;
@@ -179,7 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'DELETE'
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const result = JSON.parse(text);
             document.getElementById('eliminarProductoResult').innerHTML = `
                 <div class="success">${result.message}</div>
             `;
@@ -196,7 +224,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('listarProductosBtn').addEventListener('click', async function() {
         try {
             const response = await fetch(`${API_URL_INVENTARIO}/listar`);
-            const productos = await response.json();
+            const text = await response.text();
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}\nMensaje: ${text}`);
+            }
+            const productos = JSON.parse(text);
 
             const tableBody = document.getElementById('productosBody');
             tableBody.innerHTML = '';
